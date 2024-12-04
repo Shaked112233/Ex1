@@ -111,6 +111,8 @@ public class Ex1 {
      * @return true iff the two numbers have the same values.
      */
     public static boolean equals(String n1, String n2) {
+        if (n1 == null || n2 == null)
+            return false;
         // add your code here
         int value1 = number2Int(n1);
         int value2 = number2Int(n2);
@@ -129,9 +131,10 @@ public class Ex1 {
      *
      */
     public static int maxIndex(String[] arr) {
+        if (arr == null || arr.length ==0)
+            return -1;
         int ans = 0,i;
         int max = Integer.MIN_VALUE, value;
-        // add your code here
         for(i = 0; i < arr.length; i++) {
             value = number2Int(arr[i]);
             if(value > max) {
