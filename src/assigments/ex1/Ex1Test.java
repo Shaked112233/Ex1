@@ -27,12 +27,12 @@ public class Ex1Test {
     @Test
     void isBasisNumberTest() {
         String[] good = {"1", "1b2", "01b2", "123bA", "ABbG", "0bA"};
-        for (int i = 0; i < good.length; i = i + 1) {
+        for (int i = 0; i < good.length; i++) {
             boolean ok = Ex1.isNumber(good[i]);
             assertTrue(ok);
         }
         String[] not_good = {"b2", "2b2", "1G3bG", " BbG", "0bbA", "abB", "!@b2", "A", "1bb2"};
-        for (int i = 0; i < not_good.length; i = i + 1) {
+        for (int i = 0; i < not_good.length; i++) {
             boolean not_ok = Ex1.isNumber(not_good[i]);
             assertFalse(not_ok);
         }
