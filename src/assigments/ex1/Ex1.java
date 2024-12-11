@@ -19,39 +19,40 @@ public class Ex1 {
      * @return
      */
     public static int number2Int(String num) {
-        int ans = -1,i;
-        // add your code here
-        int len = num.length();
-        int indexOfLastDigit;
-        char last = num.charAt(len - 1);
-        int base;
-        if(len < 3 || num.charAt(len - 2) != 'b'){
-            base = 10;
-            indexOfLastDigit = len - 1;
+        int ans = -1,i;  // ערך ברירת מחדל
+        // add your code here 
+        int len = num.length(); // אורך המחרוזת
+        int indexOfLastDigit; // אינדקס הספרה האחרונה
+        char last = num.charAt(len - 1); // תו אחרון 
+        int base; // הגדרת בסיס
+        //תנאי "או" אורך המחרוזת קטן משלוש או הערך האחרון לא שווה b
+        if(len < 3 || num.charAt(len - 2) != 'b'){ 
+            base = 10; //ברירת מחדל אם לא שמו בסיס 
+            indexOfLastDigit = len - 1; // מיקום הבסיס
         }
         else {
-            indexOfLastDigit = len - 3;
+            indexOfLastDigit = len - 3; 
             if (last >= '2' && last <= '9') {
-                base = last - '0';
+                base = last - '0'; // בסיס 2-9
             } else {
                 if (last >= 'A' && last <= 'G') {
-                    base = last - 'A' + 10;
+                    base = last - 'A' + 10; // בסיס 10-16
                 } else {
-                    return ans;
+                    return ans; 
                 }
             }
         }
         int value = 0;
         int digit, power = 1;
         char ch;
-        for(i = indexOfLastDigit; i >= 0; i--){
-            ch = num.charAt(i);
+        for(i = indexOfLastDigit; i >= 0; i--){ // מעבר על הספרות מימין לשמאל
+            ch = num.charAt(i); // תו הנוכחי
             if(ch >= '0' && ch <= '9'){
-                digit = ch - '0';
+                digit = ch - '0'; // ספרה עששרונית
             }
             else {
                 if(ch >= 'A' && ch <= 'F'){
-                    digit = ch - 'A' + 10;
+                    digit = ch - 'A' + 10; // ספרה הקסדצימלית
                 }
                 else {
                     return ans;
@@ -85,19 +86,19 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans = "";
-
-        if ( num < 0 || base > 16 || base < 2) {
+        // בדיקה אם המספר שלילי או שהבסיס לא בטווח 2-16.
+        if ( num < 0 || base > 16 || base < 2) { 
             return ans;
         }
         if (num == 0) {
             return "0";
         }
-
+        // רשימת תווים לייצוג הספרות
         char[] digits = "0123456789ABCDEFG".toCharArray();
-
+        // לולאה להמרת המספר הרצוי
         for (; num > 0; num /= base) {
-            int remainder = num % base;
-            ans = digits[remainder] + ans;
+            int remainder = num % base; //ספרה נותרת אחרי החלוקה 
+            ans = digits[remainder] + ans; // הוספת הספרה מימין לשמאל  
         }
 
         return ans + "b" + digits[base];
@@ -112,14 +113,14 @@ public class Ex1 {
      */
     public static boolean equals(String n1, String n2) {
         if (n1 == null || n2 == null)
-            return false;
-        // add your code here
-        int value1 = number2Int(n1);
-        int value2 = number2Int(n2);
-        if (value1 == -1 || value2 == -1) {
+            return false; // המספרים שונים 
+
+        int value1 = number2Int(n1); // המרה לערך מספרי
+        int value2 = number2Int(n2); // כנל
+        if (value1 == -1 || value2 == -1) { //אם אחת ההמרות לא הצליחה מחזיר שקר
             return false;
         }
-        return (value1 == value2);
+        return (value1 == value2); // אם שווים מחר אמת
     }
 
     /**
@@ -131,15 +132,15 @@ public class Ex1 {
      *
      */
     public static int maxIndex(String[] arr) {
-        if (arr == null || arr.length ==0)
+        if (arr == null || arr.length ==0) // אם מערך ריק או נול מחזיר -1
             return -1;
         int ans = 0,i;
-        int max = Integer.MIN_VALUE, value;
-        for(i = 0; i < arr.length; i++) {
-            value = number2Int(arr[i]);
-            if(value > max) {
-                max = value;
-                ans = i;
+        int max = Integer.MIN_VALUE, value; // מתחיל מהערך המינימלי בתור מקס
+        for(i = 0; i < arr.length; i++) { // עוברים על כל ערך וממירים שלם
+            value = number2Int(arr[i]); 
+            if(value > max) { //אם ערך נוכחי גדול מהמקסימום
+                max = value; // מעדכן מקסימום
+                ans = i; // שומר אינדקס של ערך מקסימלי
             }
         }
         return ans;
