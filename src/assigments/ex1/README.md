@@ -1,34 +1,37 @@
-# Ex1
-##Overview
-סדר הפונקציות:
-isNumber =>equals=>number2int=>int2Number=>maxIndex
+README - Ex1: Number Formatting Converter and Calculator
+Overview
+This project is part of the "Introduction to Computer Science" course at Ariel University. It handles numbers as strings in different bases (2–16) and performs basic operations like validation, conversion, and comparison.
 
-_**פירוט שלבי הפונקציות:**_
-המטרה של הפונקציה isNumber היא לבדוק האם מחזורת בפורמט תקין,התבססתי על number2int
-שמבצעת גם בדיקת פורמט וגם המרה למספר עשרוני.
+Features
+number2Int(String num)
+Converts a formatted string (e.g., 101b2) into a decimal number. Returns -1 if invalid.
 
-המטרה של equals לבדוק אם שתי מחרוזות שוות, תחילה בדקתי אם אחת null ואם כן הפונקיה 
-תחזיר false.
-לאחר מכן השתמשתי ב number2int כדי את המחזורות לעשוני, ולבסוף הפונקציה בודקת שוויון.
+isNumber(String a)
+Checks if a string is a valid number format. Returns true for valid numbers, false otherwise.
 
-מטרת הפונקציה number2int היא לקחת מחרוזת של מספר (למשל 123b6) ולהפוך אותה למספר עשרוני.
-אורך המחרוזת צריך להיות לפחות 3,התו b חייב להופיע במקום הנכון (len - 2),והבסיס צריך להיות בטווח 2-16.
-כל ספרה מומרת לערכה העשרוני ונוספת לערך הסופי, תוך שימוש במיקום שלה במשקל הבסיס.
-אם ספרה חורגת מגבולות הבסיס, הפונקציה תחזיר -1.
+int2Number(int num, int base)
+Converts a decimal number into a string in the given base. Handles bases 2–16. Returns an empty string for invalid input.
 
-המטרה של הפונקציה int2Number היא להמיר מספר עשרוני למחרוזת בפורמט המקובל.
-נשתמש בלולאה ובכל איטרציה נחלק את המספר בבסיס ונשמור את השארית.
-השארית ממופה לספרה באמצעות מערך תווים שיצרתי,הספרות מצטרפות לתחילת המחרוזת ולבסוף משלים לפי הפורמט.
+equals(String n1, String n2)
+Compares two string numbers based on their decimal values.
 
-המטרה של הפונקציה maxIndex היא למצוא את האינדקס של המספר הגדול ביותר במערך מחרוזות.
-תחילה בדקתי אם המערך ריק או null אם כן הפונקציה מחזירה -1.
-לאחר מכן כל איבר מומר לעשרוני באמצעות number2int (אם לא תחזיק -1)
-במהלך המעבר על האיברים נשמר המקסימלי והאינדקס שלו ובסיום מוחזר האינדקס של המספר הגדול ביותר.
+maxIndex(String[] arr)
+Finds the index of the largest number in a string array. Returns -1 if the array is empty or invalid.
 
-לאחר מכן ביצעתי טסטים ובדקתי את כלל מקרה הקיצון שחשבתי שיכולים להתקיים על מנת לראות את עמידות הפונקציות.
+Key Points
+How to Use
+Open the project in IntelliJ or any Java IDE.
+Run Ex1Main.java.
+Follow the prompts to enter numbers and their base.
+See results for addition, multiplication, and the largest number in an array.
+Example
+Input:
 
-שלב סופי - Ex1Main.java
-התוכנית מבקשת להזיו מספר ראשון לאחר שהזין אני בודק אם תקין בעזרת number2int שממיר לעשרוני ובודק חוקיות עם isnumber.
-אם תקין מבקש מספר שני מהיוזר ומבצע אותו תהליך.
-לאחר ששני המספרים תקינים , מקשר מהיוזר בסיס שיוצגו התוצאות.(טווח 2-16)
-חישוב חיבור וכפל בעשרוני, ובאמצעות maxindex אני מוצא את המספר הגדול במערך ומציג הכל למשתמש.
+Number 1: 1011b2
+Number 2: 11b3
+Base: 10
+Output:
+
+1011b2 + 11b3 = 13
+1011b2 * 11b3 = 36
+Max number: 36
